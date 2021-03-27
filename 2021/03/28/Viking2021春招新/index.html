@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"casio-3.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Reverse部分 之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？）， 感谢 @Viorgaygay 领我入门😘 因为是速成，我其实也没专门看过逆向的书什么的（Google Everything）， 所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下） 承接上文，这篇文章不太会涉及原理了哈哈，主要是来">
+  <meta name="description" content="Reverse部分 之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？）， 感谢 @Vior gaygay 领我入门😘 因为是速成，我其实也没专门看过逆向的书什么的（Google Everything）， 所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下） 承接上文，这篇文章不太会涉及原理了哈哈，主要是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Viking2021春招新">
 <meta property="og:url" content="https://casio-3.github.io/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/index.html">
 <meta property="og:site_name" content="Where is your love?">
-<meta property="og:description" content="Reverse部分 之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？）， 感谢 @Viorgaygay 领我入门😘 因为是速成，我其实也没专门看过逆向的书什么的（Google Everything）， 所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下） 承接上文，这篇文章不太会涉及原理了哈哈，主要是来">
+<meta property="og:description" content="Reverse部分 之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？）， 感谢 @Vior gaygay 领我入门😘 因为是速成，我其实也没专门看过逆向的书什么的（Google Everything）， 所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下） 承接上文，这篇文章不太会涉及原理了哈哈，主要是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/03/27/VmenqQgxDaK1zGA.png">
 <meta property="og:image" content="https://i.loli.net/2021/03/27/4zi8wSIdmY7lyrg.png">
@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/03/27/519pxFtgDG2oqOP.png">
 <meta property="og:image" content="https://i.loli.net/2021/03/28/nx3fP9vSQtrZHAd.png">
 <meta property="article:published_time" content="2021-03-27T16:36:22.000Z">
-<meta property="article:modified_time" content="2021-03-27T16:36:22.506Z">
+<meta property="article:modified_time" content="2021-03-27T16:45:23.243Z">
 <meta property="article:author" content="Casio3">
 <meta property="article:tag" content="Writeup">
 <meta property="article:tag" content="Reverse">
@@ -208,8 +208,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-03-28 00:36:22" itemprop="dateCreated datePublished" datetime="2021-03-28T00:36:22+08:00">2021-03-28</time>
+              <time title="创建时间：2021-03-28 00:36:22 / 修改时间：00:45:23" itemprop="dateCreated datePublished" datetime="2021-03-28T00:36:22+08:00">2021-03-28</time>
             </span>
 
           
@@ -232,7 +233,7 @@
       
         <h1 id="Reverse部分"><a href="#Reverse部分" class="headerlink" title="Reverse部分"></a>Reverse部分</h1><blockquote>
 <p>之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？），</p>
-<p>感谢 @<a target="_blank" rel="noopener" href="https://chenxvb.github.io/">Vior</a>gaygay 领我入门😘</p>
+<p>感谢 <a target="_blank" rel="noopener" href="https://chenxvb.github.io/">@Vior</a> gaygay 领我入门😘</p>
 <p>因为是速成，我其实也没专门看过逆向的书什么的（Google Everything），</p>
 <p>所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下）</p>
 <p>承接上文，这篇文章不太会涉及原理了哈哈，主要是来自 Web 手的 IDA 的愤怒</p>
@@ -262,7 +263,7 @@
 <p>然后是 3 个 Window（从图上请寻找 Funtion window, IDA View-A, Output window），Graph overview 不在此列（可以发现这个窗口是没法让光标过去的），每个 Window 窗口可以继续往里面塞 subview，刚刚提到光标也是为了说明新开的 subview 会塞进当前光标所在窗口，而刚进去默认是聚焦在 IDA View-A（后面我称这个窗口为主视图），所以按 F5 的时候会在最大的窗口切换视图，</p>
 <p>下面还有个 Python 终端供你使用（这里还可以涉及到 IDA python2 和 python3的问题）</p>
 <p>我目前主要用到的视图都是 IDA View(Disassembly 反汇编), Pseudocode(伪代码 <code>F5</code>), Strings window(字符串 <code>Shift + F12</code>), Hex view(16进制视图)</p>
-<p>我刚开始注意到 Function name 是 Vior 提示我可以点进去看下 exit, main, start 等等函数(if exist)，然后后面可以按 <code>x</code> 键交叉引用跳转（[后面](#2. 小白の初探2)），总之双击函数名的时候主视图相应会跳转到该函数所在代码区，双击变量则会跳到对应数据区（伪代码双击变量会新开一个 stack of [function] 的视图）</p>
+<p>我刚开始注意到 Function name 是 Vior 提示我可以点进去看下 exit, main, start 等等函数(if exist)，然后按 <code>x</code> 键交叉引用跳转的方法后面再说，总之双击函数名的时候主视图相应会跳转到该函数所在代码区，双击变量则会跳到对应数据区（伪代码双击变量会新开一个 stack of [function] 的视图）</p>
 <p>比如本题你可以看到 main 函数下面就有 getflag(void)，双击之：<img src="https://i.loli.net/2021/03/27/4zi8wSIdmY7lyrg.png" alt="image-20210327125936993"></p>
 <p>IDA 很人性化的会用分号 <code>;</code> 给出注释（在光标所在行按 <code>;</code> 键可以添加自己的注释），右侧那个灰色的东东就是 aVikingW1ecomeT 这个字符数组存放的字符串，说到这儿，你可以把鼠标移动到 aVikingW1ecomeT 上面查看详细信息：<img src="https://i.loli.net/2021/03/27/b7O3tBMT4cDdKHA.png" alt="image-20210327130708104"></p>
 <p>像这样，你只要看过一点点 C 语言就能明白这是个字符数组</p>
@@ -271,7 +272,7 @@
 <p>不止是在伪代码界面，IDA View也可以这样双击函数（蓝色的）或变量然后在<u>当前视图</u>下追踪，你看过了之后还可以点击工具栏处的左箭头←回到上一处视角，</p>
 <p>正好这里又可以提到 Vior 教我的技巧，按 <code>Tab</code> 键可以在 Pseudocode 和 IDA View 视图进行对应跳转，</p>
 <p>还有能让事情变得更清晰的：<img src="https://i.loli.net/2021/03/27/V7rZ96vFS4kRhmx.png" alt="image-20210327132216420"></p>
-<p>可以看到原本为整数 92 的地方变成了其对应的 Ascii 字符 <code>\</code> （此处两道反斜线的原因是转义，不过实际我在运行这个 exe 文件的时候发现输入一道或两道都会打印处 flag），在该处右键，IDA 为我们提供了几种转化选择，按需取用即可，也可以让光标停留在这里按快捷键(if exist)直接转化，比如此处可以鼠标点一下让光标停在 92 的位置，然后按下 <code>r</code> 键转化成对应字符</p>
+<p>可以看到原本为整数 92 的地方变成了其对应的 Ascii 字符 <code>\</code> （此处两道反斜线的原因是转义，不过实际我在运行这个 exe 文件的时候发现输入一道或两道都会打印出 flag），在该处右键，IDA 为我们提供了几种转化选择，按需取用即可，也可以让光标停留在这里按快捷键(if exist)直接转化，比如此处可以鼠标点一下让光标停在 92 的位置，然后按下 <code>r</code> 键转化成对应字符</p>
 <h2 id="2-小白の初探2"><a href="#2-小白の初探2" class="headerlink" title="2. 小白の初探2"></a>2. 小白の初探2</h2><blockquote>
 <p>Description: </p>
 <p>小明发现有人把flag加密了一下下</p>
