@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32px.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16px.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"casio-3.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Reverse部分 之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？）， 感谢 @Viorgaygay 领我入门😘 因为是速成，我其实也没专门看过逆向的书什么的（Google Everything）， 所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下） 承接上文，这篇文章不太会涉及原理了哈哈，主要是来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Viking2021春招新">
+<meta property="og:url" content="https://casio-3.github.io/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/index.html">
+<meta property="og:site_name" content="Where is your love?">
+<meta property="og:description" content="Reverse部分 之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？）， 感谢 @Viorgaygay 领我入门😘 因为是速成，我其实也没专门看过逆向的书什么的（Google Everything）， 所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下） 承接上文，这篇文章不太会涉及原理了哈哈，主要是来">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/VmenqQgxDaK1zGA.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/4zi8wSIdmY7lyrg.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/b7O3tBMT4cDdKHA.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/yVUPxp4no7Jvlbm.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/dLD3S9EnaseRV7h.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/V7rZ96vFS4kRhmx.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/OzjTcHUCD1Mikml.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/6cD7lVHgrYPyoa1.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/oCSQgUNjFJ8Wxmr.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/9HAIzBUx5sVCTYD.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/ZD1fFAYRbnSPjr9.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/zQiMchPXGSe4flJ.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/WBHS1aTFndQzkEm.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/oc7bmN6ThtIaFdn.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/92tVe5TSmraMghY.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/YhtVlECFPDJ9vbc.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/usyObQhfr3ivZaP.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/t6S1clBsPmZuvYe.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/27/519pxFtgDG2oqOP.png">
+<meta property="og:image" content="https://i.loli.net/2021/03/28/nx3fP9vSQtrZHAd.png">
+<meta property="article:published_time" content="2021-03-27T16:36:22.000Z">
+<meta property="article:modified_time" content="2021-03-27T16:36:22.506Z">
+<meta property="article:author" content="Casio3">
+<meta property="article:tag" content="Writeup">
+<meta property="article:tag" content="Reverse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/03/27/VmenqQgxDaK1zGA.png">
+
+<link rel="canonical" href="https://casio-3.github.io/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Viking2021春招新 | Where is your love?</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"><a target="_blank" rel="noopener" href="https://github.com/Casio-3/" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Where is your love?</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Casio3">
+      <meta itemprop="description" content="Little trix">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Where is your love?">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Viking2021春招新
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-28 00:36:22" itemprop="dateCreated datePublished" datetime="2021-03-28T00:36:22+08:00">2021-03-28</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Reverse部分"><a href="#Reverse部分" class="headerlink" title="Reverse部分"></a>Reverse部分</h1><blockquote>
+<p>之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？），</p>
+<p>感谢 @<a target="_blank" rel="noopener" href="https://chenxvb.github.io/">Vior</a>gaygay 领我入门😘</p>
+<p>因为是速成，我其实也没专门看过逆向的书什么的（Google Everything），</p>
+<p>所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下）</p>
+<p>承接上文，这篇文章不太会涉及原理了哈哈，主要是来自 Web 手的 IDA 的愤怒</p>
+<p>某种意义上来说这也是个人 IDA 工具使用的总结，你可以勉强看作是萌新教程（轻点喷）</p>
+</blockquote>
+<a id="more"></a>
+
+<p>提一嘴：</p>
+<ul>
+<li>IDA 版本 IDA_Pro_v7.5 (<del>建议支持正版😁</del>)</li>
+<li>Kali 下 <code>upx -d [filename]</code> 脱壳</li>
+<li></li>
+</ul>
+<h2 id="1-小白の初探1（签到）"><a href="#1-小白の初探1（签到）" class="headerlink" title="1. 小白の初探1（签到）"></a>1. 小白の初探1（签到）</h2><blockquote>
+<p>Description: </p>
+<p>孙悟空再次被压于五指山下，1000年来动弹不得，任凭风吹雨打，心力交瘁。一日正午恍惚间只见远处走来一人，未待看清，顷刻山崩地裂山河改道飞沙走石，五指山竟然裂开了，孙悟空从碎石中飞一般的蹦出，奔向来人，跪地流泪道“请问来者何人”，来人颔首微笑“IDA! yyds!!!”，说罢开着挖掘机远去。</p>
+<p>Attachment: <a href="./Viking20201%E6%98%A5%E6%8B%9B%E6%96%B0/exe">exe</a></p>
+</blockquote>
+<ul>
+<li><input checked disabled type="checkbox"> IDA F5大法</li>
+</ul>
+<p>首先注意这是一个 PE+ 文件，需要 IDA 64 位打开（用 32 位也会叫你换的，签到题就无脑上 IDA 了，也可以先用 Linux 命令<code>$ file [filename]</code>康康）</p>
+<p>进来长这样，</p>
+<p><img src="https://i.loli.net/2021/03/27/VmenqQgxDaK1zGA.png" alt="image-20210327114147557"></p>
+<p>这里就不直接无脑 F5 了，因为是题已经做了一轮下来才写的 wp，利用这张图说一下整个界面（第一次用 IDA 的时候看着一堆英文，而且打开之前还往往有各种弹窗确认信息，<del>可惜我已经没了当初的那种探索欲</del>，其实多用用就渐渐摸熟了）</p>
+<p>看下界面结构，分成上面的菜单以及工具栏（彩色方块区大概是对程序的分析，看看紧跟的注释就好），</p>
+<p>然后是 3 个 Window（从图上请寻找 Funtion window, IDA View-A, Output window），Graph overview 不在此列（可以发现这个窗口是没法让光标过去的），每个 Window 窗口可以继续往里面塞 subview，刚刚提到光标也是为了说明新开的 subview 会塞进当前光标所在窗口，而刚进去默认是聚焦在 IDA View-A（后面我称这个窗口为主视图），所以按 F5 的时候会在最大的窗口切换视图，</p>
+<p>下面还有个 Python 终端供你使用（这里还可以涉及到 IDA python2 和 python3的问题）</p>
+<p>我目前主要用到的视图都是 IDA View(Disassembly 反汇编), Pseudocode(伪代码 <code>F5</code>), Strings window(字符串 <code>Shift + F12</code>), Hex view(16进制视图)</p>
+<p>我刚开始注意到 Function name 是 Vior 提示我可以点进去看下 exit, main, start 等等函数(if exist)，然后后面可以按 <code>x</code> 键交叉引用跳转（[后面](#2. 小白の初探2)），总之双击函数名的时候主视图相应会跳转到该函数所在代码区，双击变量则会跳到对应数据区（伪代码双击变量会新开一个 stack of [function] 的视图）</p>
+<p>比如本题你可以看到 main 函数下面就有 getflag(void)，双击之：<img src="https://i.loli.net/2021/03/27/4zi8wSIdmY7lyrg.png" alt="image-20210327125936993"></p>
+<p>IDA 很人性化的会用分号 <code>;</code> 给出注释（在光标所在行按 <code>;</code> 键可以添加自己的注释），右侧那个灰色的东东就是 aVikingW1ecomeT 这个字符数组存放的字符串，说到这儿，你可以把鼠标移动到 aVikingW1ecomeT 上面查看详细信息：<img src="https://i.loli.net/2021/03/27/b7O3tBMT4cDdKHA.png" alt="image-20210327130708104"></p>
+<p>像这样，你只要看过一点点 C 语言就能明白这是个字符数组</p>
+<p>额，让我们回到正题 F5 ：<img src="https://i.loli.net/2021/03/27/yVUPxp4no7Jvlbm.png" alt="image-20210327131226316"></p>
+<p>这个伪代码可以说是十分清晰了，你可以通过双击去进一步查看函数的具体内容：<img src="https://i.loli.net/2021/03/27/dLD3S9EnaseRV7h.png" alt="image-20210327131445692"></p>
+<p>不止是在伪代码界面，IDA View也可以这样双击函数（蓝色的）或变量然后在<u>当前视图</u>下追踪，你看过了之后还可以点击工具栏处的左箭头←回到上一处视角，</p>
+<p>正好这里又可以提到 Vior 教我的技巧，按 <code>Tab</code> 键可以在 Pseudocode 和 IDA View 视图进行对应跳转，</p>
+<p>还有能让事情变得更清晰的：<img src="https://i.loli.net/2021/03/27/V7rZ96vFS4kRhmx.png" alt="image-20210327132216420"></p>
+<p>可以看到原本为整数 92 的地方变成了其对应的 Ascii 字符 <code>\</code> （此处两道反斜线的原因是转义，不过实际我在运行这个 exe 文件的时候发现输入一道或两道都会打印处 flag），在该处右键，IDA 为我们提供了几种转化选择，按需取用即可，也可以让光标停留在这里按快捷键(if exist)直接转化，比如此处可以鼠标点一下让光标停在 92 的位置，然后按下 <code>r</code> 键转化成对应字符</p>
+<h2 id="2-小白の初探2"><a href="#2-小白の初探2" class="headerlink" title="2. 小白の初探2"></a>2. 小白の初探2</h2><blockquote>
+<p>Description: </p>
+<p>小明发现有人把flag加密了一下下</p>
+<p>Attachment: </p>
+<p><a href>babyEncrypted.exe</a></p>
+</blockquote>
+<ul>
+<li><input checked disabled type="checkbox"> 追踪函数</li>
+</ul>
+<p>说真的，这道题困住我的时间比后面有的题还长，基础的知识缺了点</p>
+<p>这次是个 32 位 PE 文件(not PE+)，用 IDA 32-bit 或 64-bit 都可以打开，但是只有用 32 位打开的时候才能 decompile 查看伪代码，所以你懂的</p>
+<p>下面⏩到思路是在 Function name 找到 exit 函数，然后光标停在上面按 <code>x</code> 查看交叉引用：<img src="https://i.loli.net/2021/03/27/OzjTcHUCD1Mikml.png" alt="image-20210327134841757"></p>
+<p>这样做的原因是你从刚进来的 start 函数查看的话是难以找到程序主逻辑的（直接按 F5 你也看不到主程序处的伪代码），这里的技巧就是「寻找出口」，在交叉引用窗口双击对应位置可以跳转到调用函数的代码区：<img src="https://i.loli.net/2021/03/27/6cD7lVHgrYPyoa1.png" alt="image-20210327135331336"></p>
+<p>这里 2 个黄色的 exit 就是其所有的调用了，顺便你可能发现窗口有点不一样，这是因为我把 IDA View-A 这个子视图单独从窗口中拖出来然后最大化了，至于怎么塞回去就别问我了。。。😅（目前只知道在菜单栏处的 Windows 可以 reset desktop 重置为刚打开时的桌面，这也意味着你开的伪代码或字符串视图会 GG）</p>
+<p>现在 F5 回归题目：<img src="https://i.loli.net/2021/03/27/oCSQgUNjFJ8Wxmr.png" alt="image-20210327140601049"></p>
+<p>在这里因为我已经操作过一会儿了，v1 前的 int 和 25 处的 fixed 都是新增的，</p>
+<p>逻辑也较为清楚，主要是两个 if 判断以及中间夹着的子函数，这种 <code>sub_</code> 开头的也是函数，但它们不是像 scanf 和 printf 这种 C 语言库里本就有的函数（可能是别人自己编写的），总不至于就着编译出来的程序反向把别人的函数名都还原出来吧，戳进第一个 if 里的函数看逻辑：<img src="https://i.loli.net/2021/03/27/9HAIzBUx5sVCTYD.png" alt="image-20210327141619364"></p>
+<p>主要也就是这个循环看不懂，当时没整明白在干甚么，其实搜一下 <code>*(_BYTE *)</code> 就差不多能理解的（注意是Google 英文结果🙏）<img src="https://i.loli.net/2021/03/27/ZD1fFAYRbnSPjr9.png" alt="image-20210327142255396"></p>
+<p>总之，这个函数返回了参数 a1 的长度，整个 if 语句就在检测我们输入的字符串长度是否为 25</p>
+<p>后面两处函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//if ( sub_401460((int)v1) != 25 )</span></span><br><span class="line"><span class="comment">//    exit(-1);</span></span><br><span class="line"><span class="comment">//sub_401487(v1);</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">sub_401487</span><span class="params">(<span class="keyword">int</span> a1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">int</span> i; <span class="comment">// [esp+10h] [ebp-4h]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; ; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    result = sub_401460(a1);</span><br><span class="line">    <span class="keyword">if</span> ( result &lt;= i )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    *(_BYTE *)(i + a1) ^= <span class="number">7u</span>;</span><br><span class="line">    *(_BYTE *)(i + a1) -= <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//if ( sub_4014DD(v1) )</span></span><br><span class="line"><span class="comment">//    exit(-1);</span></span><br><span class="line"><span class="comment">//puts(&quot;\nGreat!Now u know the flag!&quot;);</span></span><br><span class="line"><span class="function">BOOL __cdecl <span class="title">sub_4014DD</span><span class="params">(<span class="keyword">char</span> *Str2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">strcmp</span>(<span class="string">&quot;_id^zs2o2s02Vn24b5h2V|5px&quot;</span>, Str2) != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不说那么多了，贴一下 C 语言写的反向解 flag 代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Fight!\n&quot;</span>);</span><br><span class="line">    <span class="keyword">char</span> v1[<span class="number">26</span>] = <span class="string">&quot;_id^zs2o2s02Vn24b5h2V|5px&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">26</span>;i++)&#123;</span><br><span class="line">        v1[i] += <span class="number">2</span>;</span><br><span class="line">        v1[i] ^= <span class="number">7u</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, v1);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-小精灵"><a href="#3-小精灵" class="headerlink" title="3. 小精灵"></a>3. 小精灵</h2><blockquote>
+<p>Description:</p>
+<p>在那山的那边海的那边有一群elf</p>
+<p>Attachment: </p>
+<p><a href>easyElf</a></p>
+</blockquote>
+<p>建议了解一下 <a target="_blank" rel="noopener" href="https://lmstfy.net/?q=RUxGIOaWh+S7tg==">ELF 文件</a></p>
+<p>这个题用 IDA 64-bit 分析，依然可以点通过左侧的 main 函数进去按 <code>F5</code>， 不过此处我换一种方式：</p>
+<p><code>Shift + F12</code> 打开字符串窗口（第一题也可以这样做）</p>
+<p><img src="https://i.loli.net/2021/03/27/zQiMchPXGSe4flJ.png" alt="image-20210327144342702"></p>
+<p><del>当时做的时候好像还不知道可以从左边的 main 进</del>，无论你身处何方，Strings window 窗口都会为你展现当前程序所有的字符串，在这里用 <code>Ctrl + F</code> 搜索想寻找的字符串更容易，本题很清晰，可以看到一串 Base64 躺在那儿，解开就是 flag</p>
+<h2 id="4-baby-pyc"><a href="#4-baby-pyc" class="headerlink" title="4.  baby_pyc"></a>4.  baby_pyc</h2><blockquote>
+<p>Attachment: </p>
+<p><a href>easypy.pyc</a></p>
+</blockquote>
+<p>这是后面上新的一道 baby 题，pyc 程序逆向直接扔到在线工具网站上就可以拿到 python 源码</p>
+<h2 id="5-好多flag啊"><a href="#5-好多flag啊" class="headerlink" title="5. 好多flag啊"></a>5. 好多flag啊</h2><blockquote>
+<p>Description: </p>
+<p>你猜猜 你猜我猜不猜 你猜我猜你猜不猜</p>
+<p>注意：当输入的和输出的完全一致，此时输入的才是正确的flag哦</p>
+<p>View hint: </p>
+<p>flag是viking{}包着的哦</p>
+<p>Attachment: </p>
+<p><a href>whichisflag.exe</a></p>
+</blockquote>
+<p><font color="blue">!</font>下面的这个脚本有一点点问题，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">&quot;whichisflag.exe&quot;</span>,<span class="string">&quot;r&quot;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>,errors=<span class="string">&#x27;ignore&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.readlines()</span><br><span class="line"></span><br><span class="line">pattern = re.compile(<span class="string">r&quot;viking\&#123;.*?\&#125;&quot;</span>)</span><br><span class="line">flags = re.findall(pattern, str(data))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> flag <span class="keyword">in</span> flags:</span><br><span class="line">   v2 = ord(flag[<span class="number">22</span>]) - ord(flag[<span class="number">8</span>]) + <span class="number">29</span></span><br><span class="line">   <span class="keyword">if</span> flag == flags[v2 - <span class="number">1</span>]:</span><br><span class="line">       print(flag)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">$ python search.py</span></span><br><span class="line"><span class="string">viking&#123;CSE+/TI5FQHJr6Hz97&#125;</span></span><br><span class="line"><span class="string">viking&#123;vwH2EUZKy9zzK4B3X/&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment"># 我还不清楚为啥返回了2个flag，里面只有1个是正确的</span></span><br></pre></td></tr></table></figure>
+
+<p>我也不知道为啥我想先把脚本放前面，不习惯可以先看看后面的分析</p>
+<p>试着阐明脚本：（假定我是刚刚开始学习 Python 作为 CTF 工具使用，或许这里写的不高不低有点尴尬）</p>
+<ul>
+<li>对 exe 文件的读取<ul>
+<li>用 <code>utf-8</code> 编码读取（其实不加 encoding 参数也可以，自动识别成 gbk 编码）</li>
+<li>忽略读取中的报错，这里是指 <code>UnicodeDecodeError</code>（这个必须加，因为是强行读取的 exe ，直接以文本形式 readlines 会读到无法解码的字符报错退出，我们忽略掉这个报错，有效的字符串信息依然会被读取，等待下一步正则提取）</li>
+<li>至于 <code>with open() as:</code> ，<code>readline()</code> 和 <code>readlines()</code> 这些还可以去搜索一下</li>
+</ul>
+</li>
+<li>编写正则提取所有的 flag<ul>
+<li>这个正则的匹配模式(pattern)比较简单，可以了解的是 <code>.*?</code> 大法</li>
+<li><code>str()</code> 对读取的 data 进行强制类型转换，因为 <code>readlines()</code> 方法返回的是列表</li>
+</ul>
+</li>
+<li>依照程序逻辑找到正确的 flag<ul>
+<li>v2 的赋值 还有 if 判定是根据提供的程序写的</li>
+</ul>
+</li>
+</ul>
+<p>PE+ 文件，IDA 64-bit 打开直接进入的是 main 函数窗口</p>
+<p><code>Shift + F12</code> 可以在字符串窗口看到一堆 viking{} 包裹的 flag，不过我不太清楚 IDA 怎么批量导出</p>
+<p><code>F5</code> 伪代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> **argv, <span class="keyword">const</span> <span class="keyword">char</span> **envp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">char</span> Str[<span class="number">6</span>]; <span class="comment">// [rsp+20h] [rbp-60h] BYREF</span></span><br><span class="line">  <span class="keyword">char</span> v5; <span class="comment">// [rsp+26h] [rbp-5Ah]</span></span><br><span class="line">  <span class="keyword">char</span> v6; <span class="comment">// [rsp+28h] [rbp-58h]</span></span><br><span class="line">  <span class="keyword">char</span> v7; <span class="comment">// [rsp+29h] [rbp-57h]</span></span><br><span class="line">  <span class="keyword">char</span> v8; <span class="comment">// [rsp+2Ah] [rbp-56h]</span></span><br><span class="line">  <span class="keyword">char</span> v9; <span class="comment">// [rsp+36h] [rbp-4Ah]</span></span><br><span class="line"></span><br><span class="line">  _main();</span><br><span class="line">  <span class="built_in">printf</span>(aFlag);</span><br><span class="line">  gets(Str);</span><br><span class="line">  <span class="keyword">if</span> ( <span class="built_in">strlen</span>(Str) &lt;= <span class="number">0x1A</span> )	<span class="comment">//;这里转Decimal的值是26</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="number">2</span> * (v9 - v6) == <span class="number">3</span> * (v7 - v8)</span><br><span class="line">      &amp;&amp; v7 - v8 == v5 - <span class="number">97</span></span><br><span class="line">      &amp;&amp; Str[<span class="number">0</span>] == <span class="number">118</span>	<span class="comment">//;v</span></span><br><span class="line">      &amp;&amp; Str[<span class="number">1</span>] == <span class="number">105</span>	<span class="comment">//;i</span></span><br><span class="line">      &amp;&amp; Str[<span class="number">2</span>] == <span class="number">107</span>	<span class="comment">//;k</span></span><br><span class="line">      &amp;&amp; v5 == <span class="number">123</span> )	<span class="comment">//;&#123;</span></span><br><span class="line">    &#123;</span><br><span class="line">      which_is_flag(Str);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;flag is wrong&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    getchar();</span><br><span class="line">    result = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;flag is too long&quot;</span>);</span><br><span class="line">    result = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__int64 __fastcall <span class="title">which_is_flag</span><span class="params">(<span class="keyword">char</span> *a1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> v2; <span class="comment">// [rsp+2Ch] [rbp-4h]</span></span><br><span class="line"></span><br><span class="line">  v2 = a1[<span class="number">22</span>] - a1[<span class="number">8</span>] + <span class="number">29</span>;</span><br><span class="line">  <span class="built_in">puts</span>(<span class="string">&quot;yes, this is a flag:&quot;</span>);</span><br><span class="line">  <span class="keyword">switch</span> ( v2 )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; viking&#123;Ldr9gJO8zSCALUzR0J&#125;&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; viking&#123;gJQ9sdM9GHIt5sp5QZ&#125;&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; viking&#123;1dKg4mTLLyL/7kkTtm&#125;&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; viking&#123;2n0frh0oZs2bCqCqea&#125;&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; viking&#123;h7fcJ7LL9SXVgP6MW2&#125;&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot; viking&#123;+WmIXtnN6Dnkgw86Hi&#125;&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//共666个case</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>i64;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>i64;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>v5 - v9 这几个变量没弄清楚，双击会跳到 stack of main，数据是 undefined，可能需要动态调试才看得到具体值，不过此题我们只取 which_is_flag(Str)就够了</p>
+<h2 id="6-玩个小游戏吧"><a href="#6-玩个小游戏吧" class="headerlink" title="6. 玩个小游戏吧~"></a>6. 玩个小游戏吧~</h2><blockquote>
+<p>Description: </p>
+<p>动态调试也很重要哇！</p>
+<p>Attachment: </p>
+<p><a href>bird.exe</a></p>
+</blockquote>
+<ul>
+<li><input checked disabled type="checkbox"> Local Windows 动态调试</li>
+</ul>
+<p>这个题可以先玩玩这个小游戏有个整体感知，</p>
+<p>进 IDA 32-bit 分析，可以从函数 printf 找交叉引用，这里我选用字符串视图可以让读者看出更多东西(maybe)</p>
+<p><img src="https://i.loli.net/2021/03/27/WBHS1aTFndQzkEm.png" alt="image-20210327224647969"></p>
+<p>双击跳过来再找交叉引用：<img src="https://i.loli.net/2021/03/27/oc7bmN6ThtIaFdn.png" alt="image-20210327225030569"></p>
+<p>可以看到 printf 在这里也被调用了，我们在这里整个断点（按 <code>F2</code> 键，或是从工具栏点；<del>正常情况下看到这儿的人大部分都会点调试</del>）</p>
+<p><img src="https://i.loli.net/2021/03/27/92tVe5TSmraMghY.png" alt="image-20210327225401730"></p>
+<p>然后按 <code>F9</code> 键或者菜单栏 Debugger 准备调试</p>
+<p>选择 Local Windows Debugger 并确认运行，然后 IDA 进入调试页面，并且题目所给 exe 待运行，</p>
+<p>再按 F9 就开始继续调试进程，也就是游戏开始到游戏结束至断点处再暂停进程（其实不打断点也行，后面会有一个等待输入的地方，程序依然会停在那儿，可以在那里再修改）</p>
+<p>因为这个程序的逻辑原因，每次继续调试都会马上等待，只需要一直 <code>F9</code> 让小鸟(‘’@’’)坠地就可以</p>
+<p>这里我讲不太清楚了，不过没关系，方法才是重点</p>
+<p><img src="https://i.loli.net/2021/03/27/YhtVlECFPDJ9vbc.png" alt="image-20210327232701129"></p>
+<p>此时程序已经过了打印 Score 的地方，紧接着是等待输入 choice，</p>
+<p>图中是断点处即打印 Score 的地方生成的伪代码</p>
+<p>这时怎么找到 Your choice 所对应的代码区呢？</p>
+<p>不推荐强开 Strings Window，可能是因为处于动调的原因，有很多字符串需要索引，所以生成十分慢</p>
+<p>我是根据打印 Score 所处函数的交叉引用，一番操作来到下图：<img src="https://i.loli.net/2021/03/27/usyObQhfr3ivZaP.png" alt="image-20210327234155263"></p>
+<p>一切准备就绪，控制台输入 1 (赋给 v3)等待按下回车，相信 Score: 0 是过不了后面的判定的，所以我们在 if 处设下断点，准备直接修改变量的值绕过去，</p>
+<p><img src="https://i.loli.net/2021/03/27/t6S1clBsPmZuvYe.png" alt="image-20210327234952645"></p>
+<p>果然，byte_408078 存着我们的分数，双击之可以在 IDA View-EIP 跳转到其所在地址，</p>
+<p>接下来我们就需要在 Hex View 视图中直接修改其数据，</p>
+<p><img src="https://i.loli.net/2021/03/27/519pxFtgDG2oqOP.png" alt="image-20210327235508399"></p>
+<p>此时我通过右键选择 Synchronize with Hex View-1，使得两处窗口「同步化」，无论在哪个窗口改变光标所在位置，另一对应窗口也会相应标识出，可以看到 Hex View-1 中高亮部分就是我们需要修改的数据区，</p>
+<p>让光标来到第一个 00 处，按下 <code>F2</code> 开始修改，完成后再按一次保存修改，本题我们需要改为一个能通过 if 语句的整数值对应的 16 进制值。</p>
+<p>再后面同样的方法过 v2 就可，只要满足后面这几步逻辑就可，毕竟这个生成 flag 的函数有点复杂，不太好反解</p>
+<p><img src="https://i.loli.net/2021/03/28/nx3fP9vSQtrZHAd.png" alt="image-20210328000829364"></p>
+<h2 id="7-注册码是多少"><a href="#7-注册码是多少" class="headerlink" title="7. 注册码是多少"></a>7. 注册码是多少</h2><blockquote>
+<p>Description: </p>
+<p>小明想白嫖软件，但是小美只肯告诉他用户名，不肯告诉他注册码。 用户名：Viking flag是viking{注册码}</p>
+<p>Attachment: </p>
+<p><a href>crake.exe</a></p>
+</blockquote>
+<ul>
+<li><input disabled type="checkbox"> upx 脱壳</li>
+</ul>
+<p>很有意思的一道题，我独自摸索了很久，这是看雪 《加密与解密》第四版上的一道 crackme 题目，摸索的过程也就是在网上不断搜 注册机、crackme 这一类题（有几种类型），还有就是一些比较有特征的陌生函数名（特别指 GetDlgItemTextA ）</p>
+<p>省略了一些前置摸索，通往 flag 的过程可能显得有点突兀</p>
+<p>这个题的特点是：用户名和与其对应的特征序列码，我们需要破解得到根据用户名而生成的序列码</p>
+<p>这已经和实战中的破解搭上边了，私以为可以对照 Burp Suite 的注册机生成 license 的机制</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Writeup/" rel="tag"># Writeup</a>
+              <a href="/tags/Reverse/" rel="tag"># Reverse</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/01/hgame2021/" rel="prev" title="hgame2021">
+      <i class="fa fa-chevron-left"></i> hgame2021
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reverse%E9%83%A8%E5%88%86"><span class="nav-text">Reverse部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B0%8F%E7%99%BD%E3%81%AE%E5%88%9D%E6%8E%A21%EF%BC%88%E7%AD%BE%E5%88%B0%EF%BC%89"><span class="nav-text">1. 小白の初探1（签到）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B0%8F%E7%99%BD%E3%81%AE%E5%88%9D%E6%8E%A22"><span class="nav-text">2. 小白の初探2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B0%8F%E7%B2%BE%E7%81%B5"><span class="nav-text">3. 小精灵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-baby-pyc"><span class="nav-text">4.  baby_pyc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%A5%BD%E5%A4%9Aflag%E5%95%8A"><span class="nav-text">5. 好多flag啊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E7%8E%A9%E4%B8%AA%E5%B0%8F%E6%B8%B8%E6%88%8F%E5%90%A7"><span class="nav-text">6. 玩个小游戏吧~</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E6%B3%A8%E5%86%8C%E7%A0%81%E6%98%AF%E5%A4%9A%E5%B0%91"><span class="nav-text">7. 注册码是多少</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Casio3</p>
+  <div class="site-description" itemprop="description">Little trix</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <script
+  async
+  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Casio3</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+    <script defer src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
