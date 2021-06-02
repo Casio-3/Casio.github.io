@@ -22,30 +22,34 @@
     var CONFIG = {"hostname":"casio-3.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Little trix">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Where is your love?">
-<meta property="og:url" content="https://casio-3.github.io/index.html">
+  <meta name="description" content="Web 部分miniljava不会 Java，就硬试 MainController.java 12345678910111213141516171819202122232425262728293031package com.controller;import org.springframework.expression.ExpressionParser;import org.springframe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="miniL2021">
+<meta property="og:url" content="https://casio-3.github.io/2021/05/13/miniL2021/index.html">
 <meta property="og:site_name" content="Where is your love?">
-<meta property="og:description" content="Little trix">
+<meta property="og:description" content="Web 部分miniljava不会 Java，就硬试 MainController.java 12345678910111213141516171819202122232425262728293031package com.controller;import org.springframework.expression.ExpressionParser;import org.springframe">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-02T11:21:49.501Z">
 <meta property="article:author" content="Casio3">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Writeup">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://casio-3.github.io/">
+<link rel="canonical" href="https://casio-3.github.io/2021/05/13/miniL2021/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Where is your love?</title>
+  <title>miniL2021 | Where is your love?</title>
   
 
 
@@ -153,9 +157,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -171,10 +176,9 @@
       <meta itemprop="name" content="Where is your love?">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/13/miniL2021/" class="post-title-link" itemprop="url">miniL2021</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          miniL2021
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -197,7 +201,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Web-部分"><a href="#Web-部分" class="headerlink" title="Web 部分"></a>Web 部分</h1><h2 id="miniljava"><a href="#miniljava" class="headerlink" title="miniljava"></a>miniljava</h2><p><strong>不会 Java，就硬试</strong></p>
+        <h1 id="Web-部分"><a href="#Web-部分" class="headerlink" title="Web 部分"></a>Web 部分</h1><h2 id="miniljava"><a href="#miniljava" class="headerlink" title="miniljava"></a>miniljava</h2><p><strong>不会 Java，就硬试</strong></p>
 <p>MainController.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.expression.ExpressionParser;</span><br><span class="line"><span class="keyword">import</span> org.springframework.expression.spel.standard.SpelExpressionParser;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">    ExpressionParser parser = <span class="keyword">new</span> SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">main</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam(required = false)</span> String code,<span class="meta">@RequestParam(required = false)</span> String url)</span> <span class="keyword">throws</span> MalformedURLException </span>&#123;</span><br><span class="line">        String requestURI = request.getRequestURI();</span><br><span class="line">        <span class="keyword">if</span>(requestURI.equals(<span class="string">&quot;/&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;nonono&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (code!=<span class="keyword">null</span>) &#123;</span><br><span class="line">                String s = parser.parseExpression(code).getValue().toString();</span><br><span class="line">                <span class="keyword">return</span> s;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;so?&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -265,668 +269,42 @@
 <p>redis 直接写 webshell</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/LS95/gopher-redis-auth">https://github.com/LS95/gopher-redis-auth</a></p>
 <h1 id="Misc-部分"><a href="#Misc-部分" class="headerlink" title="Misc 部分"></a>Misc 部分</h1>
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/" class="post-title-link" itemprop="url">Viking2021春招新</a>
-        </h2>
+          <div class="post-tags">
+              <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
+              <a href="/tags/Writeup/" rel="tag"><i class="fa fa-tag"></i> Writeup</a>
+          </div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-28 00:36:22" itemprop="dateCreated datePublished" datetime="2021-03-28T00:36:22+08:00">2021-03-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Reverse部分"><a href="#Reverse部分" class="headerlink" title="Reverse部分"></a>Reverse部分</h1><blockquote>
-<p>之前从没碰过 Re（看着难，本人懒，于是鸽），这一次趁着 Viking 的招新摸一下（以题促学？），</p>
-<p>感谢 <a target="_blank" rel="noopener" href="https://chenxvb.github.io/">@Vior</a> gaygay 领我入门😘</p>
-<p>因为是速成，我其实也没专门看过逆向的书什么的（Google Everything），</p>
-<p>所以把每道 wp 写啰嗦点，个人感觉搜索一圈在网上找不到手把手入门了（如果你找到了请务必@我一下）</p>
-<p>承接上文，这篇文章不太会涉及原理了哈哈，主要是来自 Web 手的 IDA 的愤怒</p>
-<p>某种意义上来说这也是个人 IDA 工具使用的总结，你可以勉强看作是萌新教程（轻点喷）</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2021/02/01/hgame2021/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/01/hgame2021/" class="post-title-link" itemprop="url">hgame2021</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-01T00:00:00+08:00">2021-02-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="HGAME-2021-Writeup-部分"><a href="#HGAME-2021-Writeup-部分" class="headerlink" title="HGAME 2021 Writeup (部分)"></a>HGAME 2021 Writeup (部分)</h1><p>官方地址: <a target="_blank" rel="noopener" href="https://hgame.vidar.club/">https://hgame.vidar.club/</a></p>
-<h2 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h2><h3 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h3><ul>
-<li><p><strong>Hitchhiking_in_the_Galaxy</strong></p>
-<blockquote>
-<p>Description</p>
-<p>第一次在银河系里搭顺风车，要准备啥，在线等，挺急的</p>
-</blockquote>
-<p>网址打开是一个 <strong>404</strong> 页面，下附一个可点击的链接：“我要搭顺风车！”，</p>
-<p>用 Burp 抓一下，不出所料有一个 <strong>302</strong> 跳转，查看之，Title 提示 <strong>405 Method Not Allowed</strong> ，</p>
-<p>遂改原 GET 方法为 POST 重新发包（此步之后到 Repeater 模块处操作），</p>
-<p>得响应：“<em>只有使用”无限非概率引擎”(Infinite Improbability Drive)才能访问这里～</em>”</p>
-<p>根据经验猜测修改 User-Agent 头，</p>
-<p>后续依次修改 Referer 头以及 X-Forwarded-For 头即得flag</p>
-</li>
-<li><p><strong>watermelon</strong></p>
-<blockquote>
-<p>Description</p>
-<p>简单且上头的游戏</p>
-</blockquote>
-<p>结合时事 “合成大西瓜”，此时网络上已经有众多源码分析，此题即考 js审计</p>
-<p>我搜索的字符串 is_number 啥的，使得每次合成的时候获得的分数剧增，然后玩一把到游戏结束检测到分数超过2000就弹flag</p>
-<p><strong>NOTE</strong>: chrome 系的 devtools 可以直接在 source 改 js 代码，然而 firefox 改不了，怪哉！</p>
-<p>官方wp上写的也可以查找 gameover</p>
-</li>
-<li><p><strong>宝藏走私者</strong></p>
-<blockquote>
-<p>Description</p>
-<p><strong>hint: 注意留意服务器信息</strong><br><strong>资料：<a target="_blank" rel="noopener" href="https://paper.seebug.org/1048/">https://paper.seebug.org/1048/</a></strong><br>宝藏走私者 Switch 喜欢偷盗并将奇特的宝藏走私到一些黑市商家手中。<br>为了阻止其继续作恶，警探 Liki 奉命将 Switch 抓捕归案。<br>调查过程中，Liki 发现 Switch 将一个秘密藏在了一个私人服务器中。<br>这或许会成为后续追查 Switch 的重大线索，你能找到这个秘密吗？</p>
-</blockquote>
-<p>考察 http_smuggler，出题者后面直接 hint 给出学习资料了</p>
-<p>改 CL-TE 头偷鸡即可，（怀疑我是靠 Intruduer 模块上了别人的车。。。</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/01/hgame2021/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/28/Viking2021%E6%98%A5%E6%8B%9B%E6%96%B0/" rel="prev" title="Viking2021春招新">
+      <i class="fa fa-chevron-left"></i> Viking2021春招新
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/11/16/PHP%E5%B0%8F%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/16/PHP%E5%B0%8F%E7%BB%93/" class="post-title-link" itemprop="url">PHP小结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-16 17:17:43" itemprop="dateCreated datePublished" datetime="2020-11-16T17:17:43+08:00">2020-11-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Ⅰ-PHP反序列化入门"><a href="#Ⅰ-PHP反序列化入门" class="headerlink" title="Ⅰ. PHP反序列化入门"></a>Ⅰ. PHP反序列化入门</h2><h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><p><strong>类</strong>是定义一系列<strong>属性</strong>和操作的模板，<strong>对象</strong>就是把<strong>属性</strong>进行实例化，然后交给<strong>类</strong>里面的<strong>方法</strong>进行处理。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">people</span></span>&#123;</span><br><span class="line">   <span class="comment">//定义类属性（类似变量）,public 代表可见性（公有）</span></span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">&#x27;casio3&#x27;</span>;</span><br><span class="line">   <span class="comment">//定义类方法（类似函数）</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">action</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">&quot; is chasing...\n&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$bin = <span class="keyword">new</span> people(); <span class="comment">//根据people类实例化对象</span></span><br><span class="line">$bin-&gt;smile();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上述代码定义了一个people类，并在在类中定义了一个public类型的变量name和类方法action。然后实例化一个对象bin，去调用people类里面的action方法，打印出结果。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/16/PHP%E5%B0%8F%E7%BB%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/10/28/0xGame%20%E7%AC%AC%E5%9B%9B%E5%91%A8-Web(%E7%BC%BA%E4%B8%80%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/0xGame%20%E7%AC%AC%E5%9B%9B%E5%91%A8-Web(%E7%BC%BA%E4%B8%80%E9%A2%98/" class="post-title-link" itemprop="url">0xGame Week4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-28 00:00:04" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:04+08:00">2020-10-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0xGame-第四周-Web"><a href="#0xGame-第四周-Web" class="headerlink" title="0xGame 第四周-Web"></a>0xGame 第四周-Web</h1><h2 id="WriteUp-by-Casio"><a href="#WriteUp-by-Casio" class="headerlink" title="WriteUp by Casio"></a>WriteUp by Casio</h2><h3 id="1-switch"><a href="#1-switch" class="headerlink" title="1. switch"></a>1. switch</h3><p><strong>vim</strong>源码泄露，之前遇到过一次了，访问<code>/.index.php.swp</code>果然拿到了源码备份。</p>
-<p>没有装<strong>Linux</strong>环境使用<strong>vim</strong>，用<strong>Git Bash</strong>操作<code>$ vim -r index.php.swp</code>，</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/28/0xGame%20%E7%AC%AC%E5%9B%9B%E5%91%A8-Web(%E7%BC%BA%E4%B8%80%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/10/28/0xGame%20%E7%AC%AC%E4%B8%89%E5%91%A8-Web(%E7%BC%BA%E4%B8%80%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/0xGame%20%E7%AC%AC%E4%B8%89%E5%91%A8-Web(%E7%BC%BA%E4%B8%80%E9%A2%98/" class="post-title-link" itemprop="url">0xGame Week3</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-28 00:00:03" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:03+08:00">2020-10-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0xGame-第三周-Web"><a href="#0xGame-第三周-Web" class="headerlink" title="0xGame 第三周-Web"></a>0xGame 第三周-Web</h1><h2 id="WriteUp-by-Casio"><a href="#WriteUp-by-Casio" class="headerlink" title="WriteUp by Casio"></a>WriteUp by Casio</h2><h3 id="1-inject-me"><a href="#1-inject-me" class="headerlink" title="1. inject_me"></a>1. inject_me</h3><p>测试的几条注入都无效，几个特殊字符都原样返回，看看到底发送了什么请求：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;user&gt;&lt;username&gt;1&#39;&lt;&#x2F;username&gt;&lt;password&gt;2&lt;&#x2F;password&gt;&lt;&#x2F;user&gt;</span><br></pre></td></tr></table></figure>
-
-<p>诶~有点意思，再<strong>F12</strong>经过一番仔细挖掘，找到了核心<em>Js</em>:</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/28/0xGame%20%E7%AC%AC%E4%B8%89%E5%91%A8-Web(%E7%BC%BA%E4%B8%80%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/10/28/0xGame%20%E7%AC%AC%E4%BA%8C%E5%91%A8-Web/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/0xGame%20%E7%AC%AC%E4%BA%8C%E5%91%A8-Web/" class="post-title-link" itemprop="url">0xGame Week2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-28 00:00:02" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:02+08:00">2020-10-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0xGame-第二周-Web"><a href="#0xGame-第二周-Web" class="headerlink" title="0xGame 第二周-Web"></a>0xGame 第二周-Web</h1><h2 id="WriteUp-by-Casio"><a href="#WriteUp-by-Casio" class="headerlink" title="WriteUp by Casio"></a>WriteUp by Casio</h2><h3 id="1-intval"><a href="#1-intval" class="headerlink" title="1. intval"></a>1. <strong>intval</strong></h3><ul>
-<li><p><strong>1st</strong></p>
-<p><del>数组绕过没成功</del></p>
-<p>查询相关绕过，了解到<em>preg_match</em>缺陷</p>
-<blockquote>
-<p>而在非多行模式下，<code>$</code>似乎会忽略在句尾的<code>%0a</code></p>
-</blockquote>
-<p>故传入<code>?0xGame=20201001%0a</code> </p>
-<p>测试一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;web.game.0xctf.com:30102&#x2F;?0xGame&#x3D;20201001%0a&amp;id&#x3D;1024</span><br></pre></td></tr></table></figure>
-
-<p>得到Good job!信号( •̀ ω •́ )y</p></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/28/0xGame%20%E7%AC%AC%E4%BA%8C%E5%91%A8-Web/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/10/28/0xGame%20%E7%AC%AC%E4%B8%80%E5%91%A8-Web/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/0xGame%20%E7%AC%AC%E4%B8%80%E5%91%A8-Web/" class="post-title-link" itemprop="url">0xGame Week1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-28 00:00:01" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:01+08:00">2020-10-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="0xGame-第一周-Web"><a href="#0xGame-第一周-Web" class="headerlink" title="0xGame 第一周-Web"></a>0xGame 第一周-Web</h1><h2 id="WriteUp-by-Casio"><a href="#WriteUp-by-Casio" class="headerlink" title="WriteUp by Casio"></a>WriteUp by Casio</h2><h3 id="1-robots"><a href="#1-robots" class="headerlink" title="1. robots"></a>1. <strong>robots</strong></h3><p>   目录下直接访问<a target="_blank" rel="noopener" href="http://web.game.0xctf.com:30051/robots.txt%E5%8F%AF%E5%BE%97">http://web.game.0xctf.com:30051/robots.txt可得</a></p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: &#x2F;</span><br><span class="line">User-agent: CTFer</span><br><span class="line">Disallow: &#x2F;flaaaggg.php</span><br></pre></td></tr></table></figure>
-
-<p>   进一步访问<a target="_blank" rel="noopener" href="http://web.game.0xctf.com:30051/flaaaggg.php">http://web.game.0xctf.com:30051/flaaaggg.php</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/28/0xGame%20%E7%AC%AC%E4%B8%80%E5%91%A8-Web/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/09/23/Bloger/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/23/Bloger/" class="post-title-link" itemprop="url">Bloger</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-23 21:56:30" itemprop="dateCreated datePublished" datetime="2020-09-23T21:56:30+08:00">2020-09-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          噫，藏起来了！
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/23/Bloger/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/09/20/Yooo!/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Casio3">
-      <meta itemprop="description" content="Little trix">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Where is your love?">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/20/Yooo!/" class="post-title-link" itemprop="url">Yooo!</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-20 12:32:54" itemprop="dateCreated datePublished" datetime="2020-09-20T12:32:54+08:00">2020-09-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这是一个测试文档👍.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -973,6 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-%E9%83%A8%E5%88%86"><span class="nav-text">Web 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#miniljava"><span class="nav-text">miniljava</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Inc"><span class="nav-text">L Inc.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Template"><span class="nav-text">Template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#protocol"><span class="nav-text">protocol</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Misc-%E9%83%A8%E5%88%86"><span class="nav-text">Misc 部分</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1094,6 +473,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '56c5139ddc663f4efaad',
+      clientSecret: '991dcc4c263b99c6b4037fdaeb50040b9c645c63',
+      repo        : 'Casio-3.github.io',
+      owner       : 'Casio-3',
+      admin       : ['Casio-3'],
+      id          : 'd67cedbab63b8d1ee4d1f79d0d2db08c',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
