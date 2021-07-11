@@ -22,19 +22,20 @@
     var CONFIG = {"hostname":"casio-3.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}},"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="为招新题目环境做准备，又购入一台腾讯云的学生🐔（上海），在上线之前先来试试国内流量中转 因为某些奇妙的原因，移动宽带&amp;出门在外的流量没法连上香港机子的 443 端口，这个节点是配的 vless， 也是 https:&#x2F;&#x2F;github.com&#x2F;Casio-3&#x2F;docker-xray-hexo 项目首次成功运作的地方，这个机子的配置在本篇不需要改动。下面记录一下新机的 Xray-core 配">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://casio-3.github.io/2020/09/20/hello-world/index.html">
+<meta property="og:title" content="基于Xray-core的流量中转">
+<meta property="og:url" content="https://casio-3.github.io/2021/07/03/%E5%9F%BA%E4%BA%8EXray-core%E7%9A%84%E6%B5%81%E9%87%8F%E4%B8%AD%E8%BD%AC/index.html">
 <meta property="og:site_name" content="Where is your love?">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="为招新题目环境做准备，又购入一台腾讯云的学生🐔（上海），在上线之前先来试试国内流量中转 因为某些奇妙的原因，移动宽带&amp;出门在外的流量没法连上香港机子的 443 端口，这个节点是配的 vless， 也是 https:&#x2F;&#x2F;github.com&#x2F;Casio-3&#x2F;docker-xray-hexo 项目首次成功运作的地方，这个机子的配置在本篇不需要改动。下面记录一下新机的 Xray-core 配">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-20T03:18:23.276Z">
-<meta property="article:modified_time" content="2020-09-20T03:18:23.276Z">
+<meta property="article:published_time" content="2021-07-03T01:44:33.000Z">
+<meta property="article:modified_time" content="2021-07-11T15:13:25.932Z">
 <meta property="article:author" content="Casio3">
+<meta property="article:tag" content="explore">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://casio-3.github.io/2020/09/20/hello-world/">
+<link rel="canonical" href="https://casio-3.github.io/2021/07/03/%E5%9F%BA%E4%BA%8EXray-core%E7%9A%84%E6%B5%81%E9%87%8F%E4%B8%AD%E8%BD%AC/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>Hello World | Where is your love?</title>
+  <title>基于Xray-core的流量中转 | Where is your love?</title>
   
 
 
@@ -162,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2020/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://casio-3.github.io/2021/07/03/%E5%9F%BA%E4%BA%8EXray-core%E7%9A%84%E6%B5%81%E9%87%8F%E4%B8%AD%E8%BD%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -175,7 +176,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          基于Xray-core的流量中转
         </h1>
 
         <div class="post-meta">
@@ -185,7 +186,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-20 11:18:23" itemprop="dateCreated datePublished" datetime="2020-09-20T11:18:23+08:00">2020-09-20</time>
+              <time title="创建时间：2021-07-03 09:44:33" itemprop="dateCreated datePublished" datetime="2021-07-03T09:44:33+08:00">2021-07-03</time>
             </span>
 
           
@@ -199,19 +200,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>为招新题目环境做准备，又购入一台腾讯云的学生🐔（上海），在上线之前先来试试国内流量中转</p>
+<p>因为某些奇妙的原因，移动宽带&amp;出门在外的流量没法连上香港机子的 443 端口，这个节点是配的 vless，</p>
+<p>也是 <a target="_blank" rel="noopener" href="https://github.com/Casio-3/docker-xray-hexo">https://github.com/Casio-3/docker-xray-hexo</a> 项目首次成功运作的地方，这个机子的配置在本篇不需要改动。下面记录一下新机的 Xray-core 配置。</p>
+</blockquote>
+<p>网络拓扑图啥的就不画了，一台国内一台国外，搭配黑科技 Xray 来操作流量，也不谈新机的其他配置，就简简单单安装 <a target="_blank" rel="noopener" href="https://github.com/XTLS/Xray-core">https://github.com/XTLS/Xray-core</a> 配置好 json。</p>
+<a id="more"></a>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>途中遇到的一些 xray 后台运行及运行用户选择，还有 json 文件位置就咕了</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;log&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;loglevel&quot;</span>: <span class="string">&quot;warning&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;inbounds&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;port&quot;</span>: <span class="number">10800</span>,</span><br><span class="line">            <span class="attr">&quot;listen&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,  <span class="comment">// 本机代理</span></span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;socks&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;udp&quot;</span>: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;port&quot;</span>: <span class="number">11451</span>,</span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vmess&quot;</span>,    <span class="comment">// 国内中转</span></span><br><span class="line">            <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">              <span class="attr">&quot;clients&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                  <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// UUID</span></span><br><span class="line">                  <span class="attr">&quot;level&quot;</span>: <span class="number">1</span>,       <span class="comment">// 用户等级</span></span><br><span class="line">                  <span class="attr">&quot;alterId&quot;</span>: <span class="number">32</span>     <span class="comment">// 额外ID</span></span><br><span class="line">                &#125;</span><br><span class="line">              ]</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;outbounds&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;protocol&quot;</span>: <span class="string">&quot;vless&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;settings&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;vnext&quot;</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;address&quot;</span>: <span class="string">&quot;example.com&quot;</span>, <span class="comment">// 换成你的域名或服务器 IP（发起请求时无需解析域名了）</span></span><br><span class="line">                        <span class="attr">&quot;port&quot;</span>: <span class="number">443</span>,</span><br><span class="line">                        <span class="attr">&quot;users&quot;</span>: [</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="attr">&quot;id&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 填写你的 UUID</span></span><br><span class="line">                                <span class="attr">&quot;flow&quot;</span>: <span class="string">&quot;xtls-rprx-direct&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;encryption&quot;</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">                                <span class="attr">&quot;level&quot;</span>: <span class="number">0</span></span><br><span class="line">                            &#125;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;tag&quot;</span>: <span class="string">&quot;vl&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;streamSettings&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;network&quot;</span>: <span class="string">&quot;tcp&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;security&quot;</span>: <span class="string">&quot;xtls&quot;</span>, <span class="comment">// 需要使用 XTLS</span></span><br><span class="line">                <span class="attr">&quot;xtlsSettings&quot;</span>: &#123;</span><br><span class="line">                    <span class="attr">&quot;serverName&quot;</span>: <span class="string">&quot;example.com&quot;</span> <span class="comment">// 换成你的域名</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
     </div>
 
@@ -220,17 +219,21 @@
     
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/explore/" rel="tag"><i class="fa fa-tag"></i> explore</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/09/20/Yooo!/" rel="next" title="Yooo!">
-      Yooo! <i class="fa fa-chevron-right"></i>
+    <a href="/2021/05/13/miniL2021/" rel="prev" title="miniL2021">
+      <i class="fa fa-chevron-left"></i> miniL2021
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -290,7 +293,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -412,7 +414,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'Casio-3.github.io',
       owner       : 'Casio-3',
       admin       : ['Casio-3'],
-      id          : '308287016ca2d98aba0e4bfee278f039',
+      id          : 'b172f5d765dbbff106f92e6cebf63dca',
         language: '',
       distractionFreeMode: true
     });
