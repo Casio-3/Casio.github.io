@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/02/08/ricZfjb4FIwN9Ln.png">
 <meta property="og:image" content="https://i.loli.net/2021/02/08/YOXZGcIrmslbRB1.png">
 <meta property="article:published_time" content="2020-11-16T09:17:43.000Z">
-<meta property="article:modified_time" content="2021-04-07T08:48:16.350Z">
+<meta property="article:modified_time" content="2021-07-18T17:02:49.756Z">
 <meta property="article:author" content="Casio3">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
 
       
         <h2 id="Ⅰ-PHP反序列化入门"><a href="#Ⅰ-PHP反序列化入门" class="headerlink" title="Ⅰ. PHP反序列化入门"></a>Ⅰ. PHP反序列化入门</h2><h3 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3><p><strong>类</strong>是定义一系列<strong>属性</strong>和操作的模板，<strong>对象</strong>就是把<strong>属性</strong>进行实例化，然后交给<strong>类</strong>里面的<strong>方法</strong>进行处理。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">people</span></span>&#123;</span><br><span class="line">   <span class="comment">//定义类属性（类似变量）,public 代表可见性（公有）</span></span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">&#x27;casio3&#x27;</span>;</span><br><span class="line">   <span class="comment">//定义类方法（类似函数）</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">action</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">&quot; is chasing...\n&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$bin = <span class="keyword">new</span> people(); <span class="comment">//根据people类实例化对象</span></span><br><span class="line">$bin-&gt;smile();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">people</span></span>&#123;</span><br><span class="line">   <span class="comment">//定义类属性（类似变量）,public 代表可见性（公有）</span></span><br><span class="line">    <span class="keyword">public</span> $name = <span class="string">&#x27;casio3&#x27;</span>;</span><br><span class="line">   <span class="comment">//定义类方法（类似函数）</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">action</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">&quot; is chasing...\n&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$bin = <span class="keyword">new</span> people(); <span class="comment">//根据people类实例化对象</span></span><br><span class="line">$bin-&gt;action();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>上述代码定义了一个people类，并在在类中定义了一个public类型的变量name和类方法action。然后实例化一个对象bin，去调用people类里面的action方法，打印出结果。<a id="more"></a></p>
 <h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><p><strong>魔术方法</strong>：在触发了某个事件之前或之后，魔法函数会自动调用执行，而其他的普通函数必须手动调用才可以执行。php将所有以<code>__</code>(两个下划线)开头的类方法保留为魔术方法。</p>
@@ -628,14 +628,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
